@@ -2,5 +2,13 @@ This file will be used to give quick summaries of the days work:
 
 Example.Day.Year
 Accomplished:
-Questions:
-FutureThoughts:
+Pondering:
+Pondering Potential Answers:
+Next Time:
+
+2.27.21
+-Bit of Architecture & Stubs
+-How am I going to connect to the medicine cap
+-NA
+-Select Backend Development & API Platforms
+
