@@ -1,0 +1,6 @@
+This file will be used to give quick summaries of the days work:
+
+Example.Day.Year
+Accomplished:
+Questions:
+FutureThoughts:
