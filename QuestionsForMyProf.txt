@@ -1,2 +1,6 @@
 What do you see as the next step {Backend & API development platforms}?
+- Setting up a REST archeticture https://restfulapi.net
+
+
 What are these ".xml" files I keep seeing?
+- configuration files, pycharm uses them to know what your settings are for the project

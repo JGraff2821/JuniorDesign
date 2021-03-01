@@ -17,7 +17,9 @@ class User:
 
     # Function to add medicine bottles to the User's dictionary
     def add_medicine_bottle(self, bottle_name: str, drug_name: str, drug_dosage: str):
-        self.dictionary_medicine_bottles.update(MedicineBottle(bottle_name, drug_name, drug_dosage))
+        self.dictionary_medicine_bottles.update(
+            MedicineBottle(bottle_name, drug_name, drug_dosage)
+        )
 
     def add_timer(self, time_of_timer: int):
         pass
