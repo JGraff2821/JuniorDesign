@@ -26,4 +26,4 @@ async def root():
     # async def create_medicine_bottle(new_med : MedicineBottle):
     #     return new_med
     #
-    # uvicorn.run("app:app", reload=True)
+    # uvicorn.run("main:app", port=8001, reload=True)

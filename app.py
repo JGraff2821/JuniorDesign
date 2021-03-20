@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 
-app = FastAPI(title="Junior Design Project")
+app2 = FastAPI(title="Junior Design Project")
 
 
-@app.get("/hello_world")
-def hello_world_ep():
-    return {"msg": "hello world"}
+@app2.get("/hello_world")
+def hello_world_ep(name: str):
+    return {"msg": "hello "+name}
