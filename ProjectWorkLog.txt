@@ -1,14 +1,44 @@
-This file will be used to give quick summaries of the days work:
-
-Example.Day.Year
-Accomplished:
-Pondering:
-Pondering Potential Answers:
-Next Time:
+This is a copy of my OneNote E-Notebook:
 
 2.27.21
 -Bit of Architecture & Stubs
 -How am I going to connect to the medicine cap
 -NA
 -Select Backend Development & API Platforms
+
+v Weekly Goals:
+	○ Make a More Accurate Weekly Schedule
+	○ Flesh out a UML Diagram (Target)
+	○ Be able to host Basic CRUD endpoints locally (on local Mongo DB)
+
+
+v 4.13.21
+	○ Tentative List of all things that must get done:
+		○ CRUD endpoints with directives to the local database.
+		○ React Native Stylesheets
+		○ React Native Requests and API??
+		○ Docker packages???
+		○ Publishing to the app store??
+v 4.15.21
+	○ I was able make a list field to hold the medicine bottles within User
+		○ Redefined add_medicine_bottle accordingly
+	○ I added a create user endpoint with validation
+	○ I added a login endpoint
+v 4.16.21
+		○ Validated Inputs for MedBottles.
+			§ Drug Dosage => Number(basic validator will catch for me) =>Positive
+			§ Part of the function adding it to the User account will check to see if there is another bottle with the same name.
+v 4.17.21
+	○ I finished CRUD for User with Database.
+	○ I Updated the Github Repo and Told Zeke to Take a look
+
+UsefulLinks:
+	○ Setting Up Virtual Environment (Link): https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/
+
+Future Problems
+	○ Notifying the user with a notification or full screen alarm is still questionable
+	○ Login Logic
+	○ More Endpoints to API:
+
+
 

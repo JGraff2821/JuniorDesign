@@ -1,29 +1,12 @@
+import uvicorn
 from fastapi import FastAPI
+from pydantic import BaseModel
+from model_user import User
+from model_medbottle import Medicine_Bottle
+from mongoengine import *
 
-app = FastAPI()
 
+if __name__ == '__main__':
+    User.objects.delete()  # Take this out in presentation?
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-    # class MedicineBottle(BaseModel):
-    #     bottle_name: str
-    #     drug_name: str
-    #     drug_dosage: str
-    #     list_of_times: list
-    #     drug_information: dict
-    #
-    # app = FastAPI()
-    #
-    #
-    # @app.get("/")
-    # async def root():
-    #     return {"message": "Hello World"}
-    #
-    #
-    # @app.post("/NewMedicineBottle/")
-    # async def create_medicine_bottle(new_med : MedicineBottle):
-    #     return new_med
-    #
-    # uvicorn.run("main:app", port=8001, reload=True)
+    uvicorn.run("app:app", port=8001, reload=True)

@@ -1,3 +1,8 @@
-Having major problems getting the repo to recognize the uvicorn package.
-Is there a specific place that I need to downlaod it to?
-I FIGURED IT OUT!!! Why does python care so much about which interpreter I use?
+-Is there a way to send validation errors as the server's response?
+    Currently, they just act as break statements trigged by bad input.
+-Is there a term for functions that act like state machines?
+ They are recursive yet based on the states of what is returned the functions they call,
+ they call different sub functions?
+-My next little task is to finish CRUD with the med_bottles.
+ Can I just jump into React-Native after that step, or do you recommend something else.
+
