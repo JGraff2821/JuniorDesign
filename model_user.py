@@ -4,7 +4,7 @@ from datetime import datetime
 from pydantic import validator
 from pydantic.main import BaseModel
 
-#OtherDirectoryFiles
+# OtherDirectoryFiles
 from model_medbottle import Medicine_Bottle
 
 connect("juniordesign")
@@ -14,18 +14,17 @@ class User(Document):
     name = StringField(required=True, unique=True)
     hashed_password = StringField(required=True)
     email = StringField(required=True)
-    medicine_bottles = ListField()
+    medicine_bottles = ListField()  # What is the data type inside here?
     alarms = ListField(DateField)
 
-    def request_user_from_email(email: str):
-        for user in User.objects:
-            if user.email == email:
-                return user
-        return None
+    @classmethod
+    def request_user_from_email(cls, email: str):
+        return User.objects(email=email).first()
 
-    def login_user(email: str, password: str):
+    @classmethod
+    def login_user(cls, email: str, password: str):
         user_found = False
-        user = User.request_user_from_email(email)
+        user = cls.request_user_from_email(email)
         if user is not None:
             if user.hashed_password == password:
                 user_found = True
@@ -34,9 +33,15 @@ class User(Document):
         return None
 
     def dump_account_information(self):
-        return {"name": self.name, "hashed_password": self.hashed_password, "email": self.email,
-                "medicine_bottles": self.medicine_bottles, "alarms": self.alarms}
-    def update_name(self, name:str):
+        return {
+            "name": self.name,
+            "hashed_password": self.hashed_password,
+            "email": self.email,
+            "medicine_bottles": self.medicine_bottles,
+            "alarms": self.alarms,
+        }
+
+    def update_name(self, name: str):
         NewUserRequest.validate_name(name)
         self.name = name
         self.save()
@@ -48,12 +53,10 @@ class User(Document):
         self.save()
         return f"Password Updated, {self.hashed_password}"
 
-
-
-
-
     def add_medicine_bottle(self, bottle_name: str, drug_name: str, drug_dosage: str):
-        meds_to_add = Medicine_Bottle(bottle_name=bottle_name, drug_name=drug_name,drug_dosage=drug_dosage)
+        meds_to_add = Medicine_Bottle(
+            bottle_name=bottle_name, drug_name=drug_name, drug_dosage=drug_dosage
+        )
         for bottle in self.medicine_bottles:
             if bottle.bottle_name == meds_to_add.bottle_name:
                 return "Bottle not added, must have unique name."
@@ -68,6 +71,7 @@ class User(Document):
 
     def notify_user(self):  # No Idea here, may eventually be its own class
         pass
+
 
 class NewUserRequest(BaseModel):
     email: str
@@ -97,14 +101,6 @@ class NewUserRequest(BaseModel):
         return v
 
 
-
-
-
-
-
-
-
-
 # if __name__ == '__main__':
 #     # connect("juniordesign")
 #     User.objects.delete() #Take this out in presentation?
@@ -113,14 +109,5 @@ class NewUserRequest(BaseModel):
 #     NewUserRequest(email="graffJ@jbu.edu", username = "Josh G", hashed_password = "123456")
 #     Josh = User(username="Josh", hashed_password="Graff", email="graffJ@jbu.edu")
 #     Josh.save()
-    # # NewUserRequest(email="graffJ@jbu.edu", username="Josh G", hashed_password="123456")
-    # Josh.add_medicine_bottle(bottle_name="Allergy Medicine",drug_name="fsadfw1213",drug_dosage="2mg")
-
-
-
-
-
-
-
-
-
+# # NewUserRequest(email="graffJ@jbu.edu", username="Josh G", hashed_password="123456")
+# Josh.add_medicine_bottle(bottle_name="Allergy Medicine",drug_name="fsadfw1213",drug_dosage="2mg")

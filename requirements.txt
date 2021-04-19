@@ -3,3 +3,7 @@ uvicorn~=0.13.4
 pymongo~=3.11.3
 umongo~=3.0.0
 pydantic~=1.8.1
+mongoengine
+python-jose
+passlib[bcrypt]
+python-multipart
