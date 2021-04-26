@@ -9,4 +9,4 @@ from mongoengine import *
 if __name__ == '__main__':
     User.objects.delete()  # Take this out in presentation?
 
-    uvicorn.run("app:app", port=8001, reload=True)
+    uvicorn.run("app:app", port=8001, reload=True, host="0.0.0.0")
