@@ -3,6 +3,7 @@ from datetime import timedelta
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm
 from starlette import status
+from starlette.middleware.cors import CORSMiddleware
 
 from auth import (
     app,
@@ -18,7 +19,13 @@ from model_medbottle import *
 
 
 app = FastAPI(title="Junior Design Project")
-
+app.add_middleware(
+CORSMiddleware,
+allow_origins=["http://localhost:3000"],
+allow_credentials=True,
+allow_methods=["*"],
+allow_headers=["*"],
+)
 
 @app.get("/")
 async def root():
@@ -28,11 +35,9 @@ async def root():
 @app.post("/User/ListAll")
 def list_all_accounts():
 
-    return_string = "["
     for user in User.objects:
-        return_string += str(user.dump_account_information()) + ","
-    return_string += "]"
-    return return_string
+        yield user.dump_account_information()
+
 
 
 @app.post("/User/Create")

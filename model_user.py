@@ -54,14 +54,15 @@ class User(Document):
         return f"Password Updated, {self.hashed_password}"
 
     def add_medicine_bottle(self, bottle_name: str, drug_name: str, drug_dosage: str):
-        meds_to_add = Medicine_Bottle(
-            bottle_name=bottle_name, drug_name=drug_name, drug_dosage=drug_dosage
-        )
+        meds_to_add = {
+            "bottle_name":bottle_name,
+            "drug_name":drug_name,
+            "drug_dosage":drug_dosage
+        }
         for bottle in self.medicine_bottles:
-            if bottle.bottle_name == meds_to_add.bottle_name:
+            if bottle.bottle_name == meds_to_add["bottle_name"]:
                 return "Bottle not added, must have unique name."
         self.medicine_bottles.append(meds_to_add)
-        meds_to_add.save()
         self.save()
         print("Added Medicine Bottle To:", self.name)
         return f"Added Medicine Bottle To: {self.name}"
